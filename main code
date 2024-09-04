@@ -1,0 +1,25 @@
+-- Total number of bikes sold
+SELECT SUM(quantity) AS total_bikes_sold
+FROM bike_sales;
+
+-- Number of bikes sold per day
+SELECT sale_date, SUM(quantity) AS bikes_sold_per_day
+FROM bike_sales
+GROUP BY sale_date
+ORDER BY sale_date;
+
+-- Number of bikes sold by model
+SELECT bike_id, SUM(quantity) AS bikes_sold_per_model
+FROM bike_sales
+GROUP BY bike_id
+ORDER BY bikes_sold_per_model DESC;
+
+-- Total sales revenue
+SELECT SUM(quantity * price) AS total_revenue
+FROM bike_sales;
+
+-- Number of sales per customer
+SELECT customer_id, COUNT(sale_id) AS sales_per_customer
+FROM bike_sales
+GROUP BY customer_id
+ORDER BY sales_per_customer DESC;
